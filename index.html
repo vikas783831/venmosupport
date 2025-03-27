@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venmo Support | Official Help Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --venmo-blue: #3D95CE;
+            --venmo-dark: #2C3E50;
+            --venmo-light: #F5F7FA;
+            --venmo-green: #22C35E;
+            --text-gray: #333;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--venmo-blue);
+            font-size: 1.5rem;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--venmo-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(61, 149, 206, 0.9) 0%, rgba(34, 195, 94, 0.8) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=1000') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--venmo-blue);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: var(--venmo-dark);
+        }
+
+        /* Quick Help Section */
+        .quick-help {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--venmo-dark);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--venmo-blue);
+            border-radius: 2px;
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .help-card {
+            background: var(--venmo-light);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .help-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .help-icon {
+            font-size: 3rem;
+            color: var(--venmo-blue);
+            margin-bottom: 20px;
+        }
+
+        .help-card h3 {
+            margin-bottom: 15px;
+            color: var(--venmo-dark);
+        }
+
+        /* Call Support Section */
+        .call-support {
+            padding: 40px 0;
+            background: var(--venmo-light);
+            text-align: center;
+        }
+
+        .call-support h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--venmo-dark);
+        }
+
+        .call-support p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
+        }
+
+        .call-support a {
+            display: inline-block;
+            background: var(--venmo-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .call-support a:hover {
+            background: var(--venmo-dark);
+        }
+
+        /* Popular Topics */
+        .topics {
+            padding: 80px 0;
+            background: var(--venmo-light);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .topic-content {
+            padding: 25px;
+        }
+
+        .topic-content h3 {
+            margin-bottom: 15px;
+            color: var(--venmo-dark);
+        }
+
+        .topic-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--venmo-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .topic-link:hover {
+            color: var(--venmo-dark);
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: var(--venmo-light);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--venmo-blue);
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+            color: var(--venmo-dark);
+        }
+
+        .contact-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--venmo-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--venmo-dark);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--venmo-dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--venmo-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .help-grid, .topics-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Venmo Support</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#quick-help">Quick Help</a>
+                    <a href="#topics">Popular Topics</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="https://venmo.com" target="_blank">Back to Venmo</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>How can we help you today?</h1>
+            <p>Find answers to your Venmo questions or contact our support team directly.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search help articles...">
+                <button><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Help Section -->
+    <section class="quick-help" id="quick-help">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quick Help</h2>
+            </div>
+            <div class="help-grid">
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Account Setup</h3>
+                    <p>How to create and verify your Venmo account</p>
+                    <a href="#" class="topic-link">Get Started →</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Sending Money</h3>
+                    <p>Learn how to send payments to friends and family</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Bank Linking</h3>
+                    <p>Add and verify your bank account or card</p>
+                    <a href="#" class="topic-link">View Guide →</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security</h3>
+                    <p>Protect your account and transactions</p>
+                    <a href="#" class="topic-link">Security Tips →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call Support Section -->
+    <section class="call-support">
+        <div class="container">
+            <h3>Need Immediate Assistance?</h3>
+            <p>Call our support team for immediate help.</p>
+            <a href="tel:+18889859070" class="contact-link">(888) 985-9070</a>
+        </div>
+    </section>
+
+    <!-- Popular Topics Section -->
+    <section class="topics" id="topics">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Topics</h2>
+            </div>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-content">
+                        <h3>Pending Payments</h3>
+                        <p>Why your Venmo payment might be pending and how to resolve it</p>
+                        <a href="#" class="topic-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-content">
+                        <h3>Instant Transfers</h3>
+                        <p>How to transfer money to your bank instantly (for a small fee)</p>
+                        <a href="#" class="topic-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-content">
+                        <h3>Venmo Debit Card</h3>
+                        <p>Everything about ordering and using your Venmo debit card</p>
+                        <a href="#" class="topic-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-content">
+                        <h3>Business Profiles</h3>
+                        <p>How to set up and use Venmo for your small business</p>
+                        <a href="#" class="topic-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-content">
+                        <h3>Transaction Disputes</h3>
+                        <p>What to do if you didn't authorize a Venmo payment</p>
+                        <a href="#" class="topic-link">Read Article →</a>
+                    </div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-content">
+                        <h3>Privacy Settings</h3>
+                        <p>Control who sees your transactions and personal information</p>
+                        <a href="#" class="topic-link">Read Article →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Venmo Support</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-comment-alt"></i>
+                    </div>
+                    <h3>Help Center</h3>
+                    <p>Browse our comprehensive help articles</p>
+                    <a href="https://help.venmo.com" class="contact-link" target="_blank">Visit Help Center</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Support</h3>
+                    <p>Get help via email (response within 24 hours)</p>
+                    <a href="mailto:support@venmo.com" class="contact-link">Email Us</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone Support</h3>
+                    <p>Call our support team (available 6am-10pm CT)</p>
+                    <a href="tel:+18889859070" class="contact-link">(888) 985-9070</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Venmo Support</h3>
+                    <p>Your trusted resource for all Venmo help and support.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Help Topics</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Getting Started</a></li>
+                        <li><a href="#">Sending & Receiving</a></li>
+                        <li><a href="#">Account Security</a></li>
+                        <li><a href="#">Troubleshooting</a></li>
+                        <li><a href="#">Business Profiles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Fee Schedule</a></li>
+                        <li><a href="#">User  Agreement</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Download Venmo</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="https://apps.apple.com/us/app/venmo/id351727428" target="_blank">
+                            <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on the App Store" style="height: 40px;">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.venmo" target="_blank">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height: 60px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Venmo, a service of PayPal, Inc. All rights reserved.</p>
+                <p>Venmo is a registered trademark of PayPal, Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        document.querySelector('.search-bar button').addEventListener('click', function() {
+            const query = document.querySelector('.search-bar input').value;
+            alert(`Searching for: "${query}"\n(In a real implementation, this would search the help articles)`);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.help-card, .topic-card, .contact-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.help-card, .topic-card, .contact-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
